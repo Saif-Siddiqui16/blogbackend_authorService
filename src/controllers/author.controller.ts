@@ -127,11 +127,11 @@ export const deleteBlog = TryCatch(async (req: AuthenticatedRequest, res) => {
 
 export const aiTitleResponse = TryCatch(
   async (req: AuthenticatedRequest, res) => {
-    const { topic } = req.body;
+    const { text } = req.body;
 
-    if (!topic) return res.status(400).json({ error: "Topic is required" });
+    if (!text) return res.status(400).json({ error: "text is required" });
 
-    const prompt = `Suggest an engaging blog post title about: "${topic}"`;
+    const prompt = `Suggest an engaging blog post title about: "${text}"`;
 
     const ai = new GoogleGenAI({
       apiKey: process.env.Gemini_Api_Key!,
