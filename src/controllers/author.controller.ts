@@ -131,7 +131,9 @@ export const aiTitleResponse = TryCatch(
 
     if (!text) return res.status(400).json({ error: "text is required" });
 
-    const prompt = `Suggest an engaging blog post title about: "${text}" and it should be less than 4 words not more than that`;
+    const prompt = `Suggest only 1 short blog post title about: "${text}". 
+The title must be **strictly 1 to 3 words**, no more. 
+Return only the title, nothing else — no explanations or formatting.`;
 
     const ai = new GoogleGenAI({
       apiKey: process.env.Gemini_Api_Key!,
